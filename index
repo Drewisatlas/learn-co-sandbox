@@ -1,0 +1,40 @@
+const person = {
+  name: "Awesome Name",
+  occupation: {
+    title: "Senior Manager of Awesome",
+    yearsHeld: 2
+  },
+  pets: [{
+    kind: "dog",
+    name: "Fiona"
+  }, {
+    kind: "cat",
+    name: "Ralph"
+  }]
+}  
+
+function find(array, criteriaFn) {
+  for (let i = 0; i < array.length; i++) {
+    if (criteriaFn(array[i])) {
+    return array[i]
+    }
+  }
+}
+
+function find(array, criteriaFn) {
+  let current = array;
+  let next = [];
+  while (current) {
+    if (criteriaFn(current)) {
+      return current
+    }
+    if (array.isArray(current)) {
+      for (let i = 0; i < current.length; i++) {
+      next.push(current[i])
+      }
+    }
+    current = next.shift();
+    }
+  return null;
+  }
+  
